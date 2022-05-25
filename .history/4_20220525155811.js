@@ -8,20 +8,20 @@ function HomeElectrodevice() {
     this.isPlugged = true;
 }
 
-function LampElectrodevice(name, pover, brand) {
+function PhoneElectrodevice(name, price, model) {
     this.name = name;
-    this.pover = pover;
-    this.brand = brand;
+    this.price = price;
+    this.model = model;
 }
 
-function ComputerElectrodevice(name, pover, brand) {
+function LaptopElectrodevice(name, price, model) {
     this.name = name;
-    this.pover = pover;
-    this.brand = brand;
+    this.price = price;
+    this.model = model;
 }
 
-LampElectrodevice.prototype = new HomeElectrodevice();
-ComputerElectrodevice.prototype = new HomeElectrodevice();
+PhoneElectrodevice.prototype = new HomeElectrodevice();
+LaptopElectrodevice.prototype = new HomeElectrodevice();
 
 HomeElectrodevice.prototype.getEnergyUsage = function (energy) {
     console.log(`power usage of ${this.name} = ${energy}`);
@@ -32,17 +32,17 @@ HomeElectrodevice.prototype.plugIn = function () {
     this.isPlugged = true;
 }
 
-const tableLamp = new LampElectrodevice("Table lamp", 5, "Xiaomi");
-const homePC = new ComputerElectrodevice("Table PC", 120, 'Hewlett Packard');
+const applePhone = new PhoneElectrodevice('Iphone', '499 USD', 11);
+const hpLaptop = new LaptopElectrodevice('Hewlett Packard', '849 USD', 'Pavilion13');
 
-console.log(tableLamp);
-console.log(homePC);
+console.log(applePhone);
+console.log(hpLaptop);
 
-tableLamp.getEnergyUsage('20Vt');
-homePC.getEnergyUsage('350Vt');
+applePhone.getEnergyUsage('20Vt');
+hpLaptop.getEnergyUsage('350Vt');
 
-console.log(tableLamp.name, 'PlugIn_info:', tableLamp.isPlugged)
-tableLamp.plugIn();
-console.log(homePC.name, 'PlugIn_info:', homePC.isPlugged);
+console.log(applePhone.name, 'PlugIn_info:', applePhone.isPlugged)
+applePhone.plugIn();
+console.log(hpLaptop.name, 'PlugIn_info:', hpLaptop.isPlugged);
 
-console.log(tableLamp.name, 'Model_info:', tableLamp.model);
+console.log(applePhone.name, 'Model_info:', applePhone.model);
